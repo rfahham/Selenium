@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <form id="formulario">
+    <h2>Faça o seu Cadastro</h2>
+    <div class="boxes">
+      <label>Nome Completo:</label>
+      <input type="text" placeholder="Digite o seu nome completo">
+      <label>Cidade:</label>
+      <input type="text" placeholder="Digite sua cidade">
+      <label>Estado:</label>
+      <input type="text" placeholder="Digite o seu estado">
+      <label>Pais:</label>
+      <input type="text" placeholder="Digite o seu pais">
+      <button type="button" id="download">Cadastrar</button>
+    </div>
+  </form>
+
+  <script>
+    document.querySelector('#download').addEventListener('click', () => {
+      let valores = document.querySelectorAll('input');
+
+      let resultado = [];
+      valores.forEach(element => {
+        resultado.push(element.value);
+      });
+      let blob = new Blob([resultado], { type: 'text/plain;charset=utf-8;' });
+      const link = window.document.createElement('a');
+      link.href = window.URL.createObjectURL(blob);
+      link.download = 'dados.txt';
+      link.click();
+      window.URL.revokeObjectURL(link.href);
+    });
+  </script>
+</body>
+</html>
