@@ -8,6 +8,7 @@ navegador = webdriver.Chrome(service=service)
 
 ## LOGIN
 ## Usando Live Server
+sleep(10)
 navegador.get('http://localhost:5500/python/google/login/login.html')
 sleep(1)
 navegador.find_element('xpath', '//*[@id="formulario"]/div/input[1]').send_keys('rfahham@hotmail.com')
@@ -30,4 +31,4 @@ sleep(1)
 # DOWNLOAD
 navegador.find_element('xpath', '//*[@id="download"]').click()
 
-sleep(60)
+sleep(10)
