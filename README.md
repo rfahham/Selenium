@@ -17,6 +17,12 @@
 
 ## Python
 
+### Instalar o PIP
+
+```bash
+sudo apt install python3-pip
+```
+
 ### Preparando ambiente virtual
 
 ```bash
