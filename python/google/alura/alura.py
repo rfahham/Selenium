@@ -1,17 +1,22 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
-import os
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.by import By
+import time
 
-path = os.path.join(os.getcwd(), 'chromedriver')
+service = Service(ChromeDriverManager().install())
+navegador = webdriver.Chrome(service=service)
 
-service = Service(executable_path=path)
+try:
+    options = Options()
+    options.add_experimental_option("detach", True)
+    driver = webdriver.Chrome(options=options)
+    driver.get("https://www.alura.com.br")
 
-driver = webdriver.Chrome(service=service)
+    # Esperar para ver o resultado
+    time.sleep(5)
 
-driver.maximize_window()
-
-driver.get('https://www.alura.com.br')
-
-input("Pressione enter para sair")
-
-driver.quit()
+finally:
+    # Fechar o navegador
+    driver.quit()
