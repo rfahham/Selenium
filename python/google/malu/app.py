@@ -1,10 +1,27 @@
 from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
 
-navegador = webdriver.Chrome()
+driver = webdriver.Chrome()
 
-navegador.get('https://ri.magazineluiza.com.br/')
+driver.get('https://ri.magazineluiza.com.br')
 
-navegador.find_element('xpath', '//*[@id="Form1"]/header/div/div/div/div[2]/ul/li[3]/a').click()
+# Encontre o elemento que deseja clicar
+elemento = driver.find_element(By.XPATH, "//*[contains(text(), 'Informações Financeiras')]")
+elemento.click
+time.sleep(5)
 
-# navegador.find_element_by_xpath('//*[@id="Form1"]/header/div/div/div/div[2]/ul/li[3]/a').click()
+elemento2 = driver.find_element(By.XPATH, "//*[contains(text(), 'Planilha de Resultado')]")
+elemento2.click
+time.sleep(5)
 
+driver.get('https://ri.magazineluiza.com.br/ShowCanal/Planilha-de-Resultado?=CHN0/Z4bUSgrS8IkQeL+Wg==&linguagem=pt')
+
+elemento3 = driver.find_element(By.XPATH, "//*[contains(text(), 'Planilha de Resultados Trimestrais')]")
+elemento3.click()
+time.sleep(5)
+
+# O arquivo é enviado para a pasta Downloads
+
+# Feche o navegador
+driver.quit()
