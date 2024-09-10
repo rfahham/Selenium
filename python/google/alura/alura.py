@@ -1,12 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 import time
-
-service = Service(ChromeDriverManager().install())
-navegador = webdriver.Chrome(service=service)
 
 try:
     options = Options()
@@ -14,7 +9,14 @@ try:
     driver = webdriver.Chrome(options=options)
     driver.get("https://www.alura.com.br")
 
-    # Esperar para ver o resultado
+    elemento = driver.find_element(By.XPATH, "/html/body/main/section[1]/div[2]/div[2]/nav/div/div[1]/div")
+    elemento = driver.find_element(By.XPATH, "/html/body/main/section[1]/div[2]/div[2]/nav/div/div[1]/div")
+    print(elemento.text)
+    
+    time.sleep(5)
+
+    elemento.click()
+
     time.sleep(5)
 
 finally:
