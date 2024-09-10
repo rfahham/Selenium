@@ -16,16 +16,19 @@ try:
     assert "Google" in driver.title
 
     # Encontrar um elemento e interagir com ele
-    elem = driver.find_element(By.NAME, "q")  # Substitua pelo seletor apropriado
-    elem.clear()
-    elem.send_keys("selenium")
-    elem.send_keys(Keys.RETURN)
+    elemento = driver.find_element(By.NAME, "q")  # Substitua pelo seletor apropriado
+    elemento.clear()
+    elemento.send_keys("selenium")
+    elemento.send_keys(Keys.RETURN)
 
     # Esperar para ver o resultado
-    time.sleep(5)
+    time.sleep(10)
 
-    # Verificar se os resultados são relevantes
-    assert "No results found." not in driver.page_source
+    elemento2 = driver.find_element(By.XPATH, "//*[@id='rso']/div[1]/div/div/div/div/div/div/div/div[1]/div/span/a/h3")
+    print(elemento2.text)
+    elemento2.click()
+    time.sleep(10)
+
 finally:
     # Fechar o navegador
     driver.quit()
